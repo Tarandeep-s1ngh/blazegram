@@ -51,9 +51,12 @@ export const Signin = () => {
             </label>
           </div>
 
-          <button className="mt-6 text-primary w-8/12 py-1.5 rounded-md border-2 border-primary font-medium hover:bg-primary hover:text-white">
+          <Link
+            to="/feed"
+            className="mt-6 text-primary w-8/12 py-1.5 rounded-md border-2 border-primary font-medium text-center hover:bg-primary hover:text-white"
+          >
             Guest Sign in
-          </button>
+          </Link>
 
           <button className="my-3 bg-primary text-white w-8/12 py-2 rounded-md border-none font-medium hover:bg-white hover:text-primary hover:py-1.5 hover:border-solid hover:border-2 hover:border-primary">
             Sign in
