@@ -12,7 +12,7 @@ export const Navbar = () => {
           <i className="fas fa-compass fa-xl"></i>
         </Link>
         <Link to="/" className="text-secondary">
-          <i class="fa-solid fa-circle-plus fa-2xl"></i>
+          <i className="fa-solid fa-circle-plus fa-2xl"></i>
         </Link>
         <Link to="/bookmarks">
           <i className="fas fa-bookmark fa-xl"></i>
