@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { success } from "daisyui/src/colors";
 import { triggerToast } from "../../utils/toastTrigger";
 
 const initialState = {
