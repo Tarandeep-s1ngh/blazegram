@@ -1,9 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { logo } from "../../assets";
 import { Landing } from "../Landing";
+import { signUp } from "../../features";
 
 export const Signup = () => {
+  const [signUpDetails, setSignUpDetails] = useState({
+    username: "",
+    password: "",
+    fullName: "",
+  });
+
+  const dispatch = useDispatch();
+
+  const token = useSelector((state) => state.auth.token);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token) navigate("/explore", { replace: true });
+  }, [token, navigate]);
+
   return (
     <div className="h-screen bg-slate-200 flex flex-wrap justify-center items-center">
       <Landing />
@@ -29,6 +47,13 @@ export const Signup = () => {
               type="text"
               className="peer h-10 w-full border-b-2 border-gray-400 text-gray-900 placeholder-transparent focus:outline-none focus:border-primary"
               placeholder="Full name"
+              value={signUpDetails.fullName}
+              onChange={(e) => {
+                setSignUpDetails((prev) => ({
+                  ...prev,
+                  fullName: e.target.value,
+                }));
+              }}
             />
             <label
               htmlFor="fullName"
@@ -45,6 +70,13 @@ export const Signup = () => {
               type="text"
               className="peer h-10 w-full border-b-2 border-gray-400 text-gray-900 placeholder-transparent focus:outline-none focus:border-primary"
               placeholder="Email address"
+              value={signUpDetails.username}
+              onChange={(e) => {
+                setSignUpDetails((prev) => ({
+                  ...prev,
+                  username: e.target.value,
+                }));
+              }}
             />
             <label
               htmlFor="email"
@@ -60,6 +92,13 @@ export const Signup = () => {
               name="password"
               className="peer h-10 w-full border-b-2 border-gray-400 text-gray-900 placeholder-transparent focus:outline-none focus:border-primary"
               placeholder="Password"
+              value={signUpDetails.password}
+              onChange={(e) => {
+                setSignUpDetails((prev) => ({
+                  ...prev,
+                  password: e.target.value,
+                }));
+              }}
             />
             <label
               htmlFor="password"
@@ -69,7 +108,12 @@ export const Signup = () => {
             </label>
           </div>
 
-          <button className="my-3 bg-primary text-white w-8/12 py-2 rounded-md border-none font-medium hover:bg-white hover:text-primary hover:py-1.5 hover:border-solid hover:border-2 hover:border-primary">
+          <button
+            className="my-3 bg-primary text-white w-8/12 py-2 rounded-md border-none font-medium hover:bg-white hover:text-primary hover:py-1.5 hover:border-solid hover:border-2 hover:border-primary"
+            onClick={() => {
+              dispatch(signUp(signUpDetails));
+            }}
+          >
             Sign up
           </button>
 

@@ -1,8 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { pfp } from "../assets";
+import { useDispatch } from "react-redux";
+import { signOut } from "../features";
 
 export const ProfileCard = () => {
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col  justify-center bg-slate-50 w-full p-2 lg:p-4 rounded-md shadow-sm text-sm my-2">
       <section className="flex [&>*]:px-1 items-start flex-wrap">
@@ -29,12 +35,15 @@ export const ProfileCard = () => {
           </small>
         </div>
         <div className="ml-auto">
-          <Link
-            to="/"
+          <button
+            onClick={() => {
+              dispatch(signOut());
+              navigate("/");
+            }}
             className="text-slate-500 hover:border-accent hover:text-accent mr-2 md:hidden"
           >
-            <i className="fa-solid fa-right-from-bracket"></i>
-          </Link>
+            <i className="fa-solid fa-right-from-bracket fa-lg"></i>
+          </button>
           <label
             htmlFor="profile-modal"
             className="font-medium inline-block p-1 rounded-md border-2 border-slate-500 text-slate-500 hover:border-accent hover:text-accent hover:cursor-pointer lg:font-semibold modal-button"
