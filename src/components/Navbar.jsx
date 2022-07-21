@@ -1,7 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signOut } from "../features";
 
 export const Navbar = () => {
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
   return (
     <>
       <nav className="btm-nav btm-nav-sm bg-slate-50 text-slate-400 [&>.active]:border-t-4 [&>.active]:bg-slate-50 [&>.active]:text-accent z-10 md:hidden">
@@ -51,10 +57,16 @@ export const Navbar = () => {
           <i className="fas fa-user-circle fa-lg"></i>
           <span>PROFILE</span>
         </Link>
-        <Link to="/" className="flex gap-2 items-center hover:bg-slate-50">
+        <button
+          onClick={() => {
+            dispatch(signOut());
+            navigate("/");
+          }}
+          className="flex gap-2 items-center hover:bg-slate-50"
+        >
           <i className="fa-solid fa-right-from-bracket fa-lg"></i>
           <span>SIGNOUT</span>
-        </Link>
+        </button>
         <button className="bg-accent text-slate-50 rounded-md py-1 hover:bg-primary">
           POST
         </button>
