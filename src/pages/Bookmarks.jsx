@@ -16,7 +16,7 @@ export const Bookmarks = () => {
         <Navbar />
       </section>
 
-      <section className="mt-20 font-bold text-slate-500 text-lg text-center">
+      <section className="mt-20 font-bold text-slate-500 text-lg text-center md:grow">
         No Bookmarks Yet!
       </section>
       {/* <section className="mt-10 mb-12 md:my-0 flex flex-col items-center justify-center md:grow">
