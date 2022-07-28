@@ -12,12 +12,12 @@ export const Signin = () => {
 
   const dispatch = useDispatch();
 
-  const token = useSelector((state) => state.auth.token);
+  const token = useSelector((state) => state.authentication?.token);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (token) navigate("/explore", { replace: true });
+    if (token) navigate("/feed", { replace: true });
   }, [token, navigate]);
 
   return (
@@ -85,12 +85,12 @@ export const Signin = () => {
           <button
             onClick={() => {
               setSignInDetails({
-                username: "test",
+                username: "Nishant13",
                 password: "test",
               });
               dispatch(
                 signIn({
-                  username: "test",
+                  username: "Nishant13",
                   password: "test",
                 })
               );
