@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logoname } from "../assets";
 import {
@@ -7,9 +8,22 @@ import {
   FeedCard,
   ProfileCard,
   ProfileModal,
+  PostModal,
 } from "../components";
+import { fetchUserPosts } from "../features/feed/feedSlice";
 
 export const Profile = () => {
+  const dispatch = useDispatch();
+  const signInUser = useSelector((state) => state.authentication?.userData);
+  const myPosts = useSelector((state) => state.feed?.userPosts);
+
+  const flag = useSelector((state) => state.feed?.fetchFlag);
+  const userFlag = useSelector((state) => state.authentication?.userFlag);
+
+  useEffect(() => {
+    dispatch(fetchUserPosts(signInUser.username));
+  }, [dispatch, signInUser, flag, userFlag]);
+
   return (
     <div className="pt-4 px-2 bg-bgmain md:flex md:justify-evenly md:items-start md:gap-4 lg:px-24 lg:gap-8 min-h-screen">
       <section className="flex flex-col md:bg-slate-50">
@@ -22,17 +36,21 @@ export const Profile = () => {
         <Navbar />
       </section>
 
-      <section className="mt-10 mb-12 md:my-0 flex flex-col items-center justify-center md:grow">
-        <ProfileCard />
+      <section className="mt-10 mb-12 md:my-0 flex flex-col items-center justify-center md:grow md:max-w-xl">
+        <ProfileCard myPosts={myPosts} signInUser={signInUser} />
 
-        <FeedCard />
-        <FeedCard />
+        {myPosts.map((post) => {
+          return <FeedCard key={post._id} post={post} />;
+        })}
       </section>
       <section className="hidden md:block">
         <Suggestionbar />
       </section>
 
-      <ProfileModal />
+      <ProfileModal signInUser={signInUser} />
+
+      {/********** Post Modal **********/}
+      <PostModal />
     </div>
   );
 };

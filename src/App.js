@@ -3,7 +3,15 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-import { Bookmarks, Explore, Feed, Profile, Signin, Signup } from "./pages";
+import {
+  Bookmarks,
+  Explore,
+  Feed,
+  OtherUserProfile,
+  Profile,
+  Signin,
+  Signup,
+} from "./pages";
 
 function App() {
   const { pathname } = useLocation();
@@ -15,11 +23,12 @@ function App() {
     <div className="App text-gray-800">
       <Routes>
         <Route path="/" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/feed" element={<Feed />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/bookmarks" element={<Bookmarks />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="signup" element={<Signup />} />
+        <Route path="feed" element={<Feed />} />
+        <Route path="explore" element={<Explore />} />
+        <Route path="bookmarks" element={<Bookmarks />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="/user/:userId" element={<OtherUserProfile />} />
       </Routes>
       <ToastContainer
         position="top-right"

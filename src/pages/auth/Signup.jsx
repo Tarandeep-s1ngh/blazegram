@@ -14,12 +14,12 @@ export const Signup = () => {
 
   const dispatch = useDispatch();
 
-  const token = useSelector((state) => state.auth.token);
+  const token = useSelector((state) => state.authentication.token);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (token) navigate("/explore", { replace: true });
+    if (token) navigate("/feed", { replace: true });
   }, [token, navigate]);
 
   return (
