@@ -87,7 +87,7 @@ export function makeServer({ environment = "development" } = {}) {
         "/comments/edit/:postId/:commentId",
         editPostCommentHandler.bind(this)
       );
-      this.post(
+      this.delete(
         "/comments/delete/:postId/:commentId",
         deletePostCommentHandler.bind(this)
       );
@@ -116,6 +116,11 @@ export function makeServer({ environment = "development" } = {}) {
         "/users/unfollow/:followUserId/",
         unfollowUserHandler.bind(this)
       );
+
+      this.passthrough();
+      this.passthrough("https://api.cloudinary.com/v1_1/taran16/image/upload", [
+        "post",
+      ]);
     },
   });
 }

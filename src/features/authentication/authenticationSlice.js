@@ -7,6 +7,7 @@ const initialState = {
   userData: JSON.parse(localStorage.getItem("userData")) || {},
   users: [],
   error: "",
+  userFlag: false,
 };
 
 export const signIn = createAsyncThunk(
@@ -46,6 +47,64 @@ export const signUp = createAsyncThunk(
   }
 );
 
+export const fetchUsers = createAsyncThunk(
+  "authentication/fetchUsers",
+  async () => {
+    return await axios
+      .get("/api/users")
+      .then((res) => res.data)
+      .catch((err) => err);
+  }
+);
+
+export const followUser = createAsyncThunk(
+  "authentication/followUser",
+  async ({ userId, encodedToken }) => {
+    return await axios
+      .post(
+        `/api/users/follow/${userId}`,
+        {},
+        { headers: { authorization: encodedToken } }
+      )
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => err);
+  }
+);
+
+export const unFollowUser = createAsyncThunk(
+  "authentication/unFollowUser",
+  async ({ userId, encodedToken }) => {
+    return await axios
+      .post(
+        `/api/users/unfollow/${userId}`,
+        {},
+        { headers: { authorization: encodedToken } }
+      )
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => err);
+  }
+);
+
+export const updateProfile = createAsyncThunk(
+  "authentication/updateProfile",
+  async ({ encodedToken, data }) => {
+    try {
+      const res = await axios.post(
+        "/api/users/edit",
+        { userData: data },
+        { headers: { authorization: encodedToken } }
+      );
+      return res.data;
+    } catch (err) {
+      return err;
+    }
+  }
+);
+
 export const authenticationSlice = createSlice({
   name: "authentication",
   initialState,
@@ -73,7 +132,6 @@ export const authenticationSlice = createSlice({
       triggerToast("error", action.payload.response?.data.errors[0]);
     },
     [signUp.fulfilled]: (state, action) => {
-      console.log(action.payload);
       state.token = action.payload.encodedToken;
       state.userData = action.payload.createdUser;
       localStorage.setItem(
@@ -85,6 +143,33 @@ export const authenticationSlice = createSlice({
     [signUp.rejected]: (state, action) => {
       state.error = action.error.message;
       triggerToast("error", action.payload.response?.data.errors[0]);
+    },
+    [fetchUsers.fulfilled]: (state, action) => {
+      state.users = action.payload.users;
+    },
+    [fetchUsers.rejected]: (state, action) => {
+      state.error = action.error.message;
+    },
+    [followUser.fulfilled]: (state, action) => {
+      state.userFlag = !state.userFlag;
+      state.userData = action.payload.user;
+    },
+    [followUser.rejected]: (state, action) => {
+      state.error = action.error.message;
+    },
+    [unFollowUser.fulfilled]: (state, action) => {
+      state.userFlag = !state.userFlag;
+      state.userData = action.payload.user;
+    },
+    [unFollowUser.rejected]: (state, action) => {
+      state.error = action.error.message;
+    },
+    [updateProfile.fulfilled]: (state, action) => {
+      state.userFlag = !state.userFlag;
+      state.userData = action.payload.user;
+    },
+    [updateProfile.rejected]: (state, action) => {
+      state.error = action.error.message;
     },
   },
 });

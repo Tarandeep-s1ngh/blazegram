@@ -5,3 +5,4 @@ export { Feed } from "./Feed";
 export { Explore } from "./Explore";
 export { Bookmarks } from "./Bookmarks";
 export { Profile } from "./Profile";
+export { OtherUserProfile } from "./OtherUserProfile";
