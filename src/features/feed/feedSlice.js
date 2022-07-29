@@ -114,7 +114,9 @@ export const fetchBookmarkPost = createAsyncThunk(
   async ({ encodedToken }) => {
     return await axios
       .get("/api/users/bookmark", { headers: { authorization: encodedToken } })
-      .then((res) => res.data)
+      .then((res) => {
+        return res.data;
+      })
       .catch((err) => err);
   }
 );

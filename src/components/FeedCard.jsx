@@ -51,7 +51,6 @@ export const FeedCard = ({ post }) => {
       let otherUserProfile = users.find(
         (user) => user.username === commentUsername
       );
-      console.log(otherUserProfile);
       navigate(`/user/${otherUserProfile._id}`);
     }
   };
