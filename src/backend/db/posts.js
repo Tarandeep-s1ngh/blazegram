@@ -1,5 +1,6 @@
 import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
+import { pfp } from "../../assets";
 
 /**
  * Posts can be added here.
@@ -80,8 +81,7 @@ export const posts = [
     },
     fullName: "Taran",
     username: "taran16",
-    profileImageUrl:
-      "https://images.unsplash.com/photo-1580929211634-0e8f1adae279?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80",
+    profileImageUrl: pfp,
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [
@@ -138,8 +138,7 @@ export const posts = [
     },
     fullName: "Taran",
     username: "taran16",
-    profileImageUrl:
-      "https://images.unsplash.com/photo-1580929211634-0e8f1adae279?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80",
+    profileImageUrl: pfp,
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [],
@@ -171,8 +170,7 @@ export const posts = [
     },
     fullName: "Taran",
     username: "taran16",
-    profileImageUrl:
-      "https://images.unsplash.com/photo-1580929211634-0e8f1adae279?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80",
+    profileImageUrl: pfp,
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [],
@@ -205,8 +203,7 @@ export const posts = [
     },
     fullName: "Taran",
     username: "taran16",
-    profileImageUrl:
-      "https://images.unsplash.com/photo-1580929211634-0e8f1adae279?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80",
+    profileImageUrl: pfp,
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [

@@ -85,12 +85,12 @@ export const Signin = () => {
           <button
             onClick={() => {
               setSignInDetails({
-                username: "Nishant13",
+                username: "taran16",
                 password: "test",
               });
               dispatch(
                 signIn({
-                  username: "Nishant13",
+                  username: "taran16",
                   password: "test",
                 })
               );

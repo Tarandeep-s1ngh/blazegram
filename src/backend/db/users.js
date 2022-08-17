@@ -1,5 +1,6 @@
 import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
+import { pfp } from "../../assets";
 /**
  * User Database can be added here.
  * You can add default users of your wish with different attributes
@@ -56,8 +57,7 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     bio: "Passionate Frontend Developer",
-    profileImage:
-      "https://images.unsplash.com/photo-1580929211634-0e8f1adae279?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80",
+    profileImage: pfp,
     website: "https://twitter.com/Tarandeep_s1ngh",
     following: [],
     followers: [],
@@ -73,6 +73,20 @@ export const users = [
     profileImage:
       "https://images.unsplash.com/photo-1518577915332-c2a19f149a75?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=562&q=80",
     website: "SDE @Unacademy",
+    following: [],
+    followers: [],
+  },
+  {
+    _id: uuid(),
+    fullName: "Jaya Srikar",
+    username: "znjs",
+    password: "test",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    bio: "Technophile, Developer | Currently Inactive",
+    profileImage:
+      "https://images.unsplash.com/photo-1485528562718-2ae1c8419ae2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=558&q=80",
+    website: "https://twitter.com/rkap810",
     following: [],
     followers: [],
   },
