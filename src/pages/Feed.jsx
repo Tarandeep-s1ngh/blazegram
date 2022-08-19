@@ -47,7 +47,7 @@ export const Feed = () => {
   };
   useEffect(() => {
     if (!!!encodedToken) {
-      navigate("/login");
+      navigate("/");
     }
   }, [encodedToken, navigate]);
 
@@ -87,6 +87,7 @@ export const Feed = () => {
             <i className="fa-solid fa-sort mr-1"></i> Latest Posts
           </button>
         </div>
+
         {!!posts.length && displayPosts()}
       </section>
 

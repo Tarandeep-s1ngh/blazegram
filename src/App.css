@@ -1,0 +1,27 @@
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #edf2f6;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #40404028;
+    border: 0.10rem solid #edf2f6;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #8047c5;
+}
+
+.hide-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+.hide-scroll {
+-ms-overflow-style: none;
+  scrollbar-width: none;
+}
