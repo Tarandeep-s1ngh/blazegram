@@ -13,6 +13,7 @@ export {
   fetchPosts,
   toggleFetchFlag,
   setEditPost,
+  setSearchSuggestions,
   editUserPost,
   fetchBookmarkPost,
   removePostFromBookmark,
