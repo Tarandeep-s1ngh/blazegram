@@ -10,6 +10,7 @@ const initialState = {
   userBookmarks: [],
   fetchFlag: false,
   editPost: {},
+  searchSuggestions: false,
 };
 
 export const fetchPosts = createAsyncThunk("feed/fetchPosts", async () => {
@@ -180,6 +181,9 @@ export const feedSlice = createSlice({
     setEditPost: (state, action) => {
       state.editPost = action.payload;
     },
+    setSearchSuggestions: (state, action) => {
+      state.searchSuggestions = action.payload;
+    },
   },
   extraReducers: {
     [fetchPosts.fulfilled]: (state, action) => {
@@ -257,6 +261,7 @@ export const feedSlice = createSlice({
   },
 });
 
-export const { toggleFetchFlag, setEditPost } = feedSlice.actions;
+export const { toggleFetchFlag, setEditPost, setSearchSuggestions } =
+  feedSlice.actions;
 
 export const feedReducer = feedSlice.reducer;

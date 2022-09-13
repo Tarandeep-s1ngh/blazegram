@@ -2,6 +2,7 @@ export { FeedCard } from "./FeedCard";
 export { Navbar } from "./Navbar";
 export { CreatePost } from "./CreatePost";
 export { Searchbar } from "./Searchbar";
+export { SearchCard } from "./SearchCard";
 export { Suggestionbar } from "./Suggestionbar";
 export { SuggestionCard } from "./SuggestionCard";
 export { ProfileCard } from "./ProfileCard";

@@ -1,8 +1,10 @@
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import { setSearchSuggestions } from "./features";
 import {
   Bookmarks,
   Explore,
@@ -19,8 +21,16 @@ function App() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
+  const dispatch = useDispatch();
+
   return (
-    <div className="App text-gray-800">
+    <div
+      className="App text-gray-800"
+      onClick={(e) => {
+        dispatch(setSearchSuggestions(false));
+        e.stopPropagation();
+      }}
+    >
       <Routes>
         <Route path="/" element={<Signin />} />
         <Route path="signup" element={<Signup />} />
